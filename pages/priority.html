@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--<style>
+        p {
+            color: red !important;
+        }
+    </style>-->
+    <!--<style>
+        p {
+            color: blue;
+        }
+        p {
+            color: beige;
+        }
+    </style>-->
+    <style>
+        #text {
+            color: blue;
+        }
+    </style>        
+    <title>Document</title>
+</head>
+<body>
+    <p>색상변경 우선순위 확인</p>
+    <li>1. important</li>
+    <li>2. 태그에 직접</li>
+    <li>3. 같은 css에 있을 경우 맨 마지막 적용</li>
+
+    <p id="text" style="color: coral;">색상변경 우선순위 확인(선택자)</p>
+    <p id="text" style="color: coral;">색상변경 우선순위 확인</p>
+</body>
+</html>

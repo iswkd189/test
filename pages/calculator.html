@@ -1,0 +1,111 @@
+<style>
+    .wrapper {
+        display: grid;
+        grid-gap: 10px;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 100px 100px 100px 100px 100px 100px;
+    }
+    div > div {
+        background-color: rgb(207, 232, 220);
+        border: 2px solid rgb(79, 185, 227);
+        padding: 5px;
+        border-radius: 5px;
+        font-size: 24px;
+        text-align: center;
+        cursor: pointer;
+    }
+    #zero {
+        grid-column: 1 / 4;
+    }
+</style>
+
+<body>
+    <h1 id="result"></h1>
+    <div class="wrapper">
+        <div id="clear">C</div><div id="equal">=</div>
+        <div>+</div><div>-</div><div>*</div><div>/</div>
+        <div>7</div><div>8</div><div>9</div>
+        <div>4</div><div>5</div><div>6</div>
+        <div>1</div><div>2</div><div>3</div>
+        <div id="zero">0</div>
+    </div>
+    <button onclick="back()">Back</button>
+    <script>
+        let currentOperand = "";
+        let previousOperand = "";
+        let operation = undefined;
+
+        const resultElement = document.getElementById('result');
+
+        function appendNumber(number) {
+            if (number === '.' && currentOperand.includes('.')) return;
+            currentOperand += number;
+            resultElement.textContent = currentOperand;
+        }
+
+        function chooseOperation(op) {
+            if (currentOperand === '') return;
+            if (previousOperand !== '') {
+                compute();
+            }
+            operation = op;
+            previousOperand = currentOperand;
+            currentOperand = '';
+        }
+
+        function compute() {
+            let computation;
+            const prev = parseFloat(previousOperand);
+            const current = parseFloat(currentOperand);
+            if (isNaN(prev) || isNaN(current)) return;
+            switch (operation) {
+                case '+':
+                    computation = prev + current;
+                    break;
+                case '-':
+                    computation = prev - current;
+                    break;
+                case '/':
+                    computation = prev / current;
+                    break;
+                case '*':
+                    computation = prev * current;
+                    break;
+            }
+            currentOperand = computation;
+            operation = undefined;
+            previousOperand = '';
+            resultElement.textContent = currentOperand;
+        }
+
+        function clear() {
+            currentOperand = '';
+            previousOperand = '';
+            operation = undefined;
+            resultElement.textContent = '';
+        }
+
+        function back() {
+            currentOperand = currentOperand.slice(0, -1);
+            resultElement.textContent = currentOperand;
+        }
+
+        const buttons = document.querySelectorAll('.wrapper div');
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                const buttonText = button.textContent;
+                if (['+', '-', '*', '/'].includes(buttonText)) {
+                    chooseOperation(buttonText);
+                } else if (buttonText === '=') {
+                    compute();
+                } else if (buttonText === 'C') {
+                    clear();
+                } else if (buttonText === 'Back') {
+                    back();
+                } else {
+                    appendNumber(buttonText);
+                }
+            });
+        });
+    </script>
+</body>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      function show() {
+        const client = getClient();
+        const img = document.querySelector('img');
+        switch (client) {
+          case 'AndroidPhone':
+            img.src = 'https://images.velog.io/images/jojo_devstory/post/dae32386-bffc-40c3-b866-5c1e64516902/Android%2010_0.jpg';
+            break;
+          case 'iPhone':
+            img.src = 'https://www.apple.com/kr/iphone/home/bp/images/meta/iphone__ky2k6x5u6vue_og.png';
+            break;
+          case 'iPad':
+            img.src = 'https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/ipad-finish-unselect-gallery-1-202207_GEO_KR_FMT_WHH?wid=1280&hei=720&fmt=p-jpg';
+            break;
+          case 'Chrome':
+            img.src = 'https://velog.velcdn.com/images/sukyoungshin/post/89cbbb38-4e4b-45cf-aa3f-9dfe06ff7a91/image.webp';
+            break;
+          default:
+            img.src = 'https://images.velog.io/images/dev_shu/post/d695eb16-9f9e-44e4-9338-dc3b30c34d0d/etc.jpeg';
+        }
+      }
+
+      function getClient() {
+        const userAgent = navigator.userAgent;
+        console.log(userAgent);
+        let os = '';
+        if (userAgent.indexOf('Android') > -1) {
+          os = 'AndroidPhone';
+        } else if (userAgent.indexOf('iPhone') > -1) {
+          os = 'iPhone';
+        } else if (userAgent.indexOf('iPad') > -1) {
+          os = 'iPad';
+        } else if (userAgent.indexOf('Chrome') > -1) {
+          os = 'Chrome';
+        } else {
+          os = 'ETC';
+        }
+        return os;
+      }
+    </script>
+  </head>
+  <body onload="show()">
+    <img src="" style="width: 300px;">
+  </body>
+</html>

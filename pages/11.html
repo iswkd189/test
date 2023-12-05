@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        a::before {
+          content: '앵커 태그 - ';
+          color: skyblue;
+        }
+        a:active::after { 
+          content: ' (' attr(href) ')';
+          color: purple;
+        }
+        a::selection { background-color : cyan; }
+        a { text-decoration: none;}
+        a:visited { color: blue; }
+        a:active { color: yellow; }
+        </style>
+        
+    <title>Document</title>
+</head>
+<body>
+    <a href="http://ggoreb.com">GGoreb</a><br>
+    <a href="http://zdnet.co.kr">ZDNet</a><br>
+    <a href="http://oss.kr">공개소프트웨어 포탈</a><br>
+    <a href="http://blotter.net">블로터</a><br>
+</body>
+</html>

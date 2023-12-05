@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        input + span {
+            display: none;
+        }
+        input:checked + span + span {
+            display: none;
+        }
+        input + span + span {
+            color: red;
+        }
+        input:checked + span {
+            display: inline-block;
+            color: green;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <input type="checkbox">
+    <span>선택O</span>
+    <span>선택X</span>
+    <hr>
+    <input type="checkbox">
+    <span>선택O</span>
+    <span>선택X</span>
+</body>
+</html>
